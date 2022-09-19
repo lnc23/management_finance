@@ -1,4 +1,6 @@
-part of 'auth_cubit.dart';
+import 'package:equatable/equatable.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:management_finance/model/user_model.dart';
 
 @immutable
 abstract class AuthState extends Equatable {

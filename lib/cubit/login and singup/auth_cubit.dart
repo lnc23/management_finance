@@ -1,10 +1,7 @@
 import 'package:bloc/bloc.dart';
-import 'package:equatable/equatable.dart';
 import 'package:management_finance/controller/auth_controller.dart';
+import 'package:management_finance/cubit/login%20and%20singup/auth_state.dart';
 import 'package:management_finance/model/user_model.dart';
-import 'package:meta/meta.dart';
-
-part 'auth_state.dart';
 
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(AuthInitial());

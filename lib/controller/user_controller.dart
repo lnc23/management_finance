@@ -7,12 +7,14 @@ class usercontroller {
 
   Future<void> setUser(UserModel user) async {
     try {
-      _userReference.doc(user.id).set({
-        'email': user.email,
-        'name': user.name,
-        'no_telp': user.no_telp,
-        'password': user.password
-      });
+      _userReference.doc(user.id).set(
+        {
+          'email': user.email,
+          'name': user.name,
+          'no_telp': user.no_telp,
+          'password': user.password
+        },
+      );
     } catch (e) {
       throw e;
     }

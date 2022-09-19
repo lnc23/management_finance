@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:management_finance/color/theme.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import '../../../cubit/auth_cubit.dart';
+import '../../../cubit/login and singup/auth_cubit.dart';
+import '../../../cubit/login and singup/auth_state.dart';
 import '../../widget/custom button/custom_button.dart';
 import '../../widget/custom form text/custom_text_form_field.dart';
 
@@ -63,7 +63,6 @@ class _LoginPageState extends State<LoginPage> {
           width: 200,
           margin: EdgeInsets.only(top: 10),
           onPressed: () async {
-            Navigator.pushNamed(context, '/home');
             context.read<AuthCubit>().signIn(
                   email: emailController.text,
                   password: passwordController.text,

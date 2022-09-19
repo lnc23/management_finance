@@ -1,9 +1,72 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
 import 'package:management_finance/color/theme.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 import '../../widget/custom button/custom_button_menu.dart';
+
+final TextEditingController controllerDate = TextEditingController(text: "");
+final TextEditingController controllerKeterangan =
+    TextEditingController(text: "");
+final TextEditingController controllerHarga = TextEditingController(text: "");
+DateTime date = DateTime(2022, 12, 24);
+
+_openPopup(context) {
+  Alert(
+    context: context,
+    title: "Add Income",
+    content: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        ElevatedButton(
+          onPressed: () async {
+            showDatePicker(
+              context: context,
+              initialDate: date,
+              firstDate: DateTime(1900),
+              lastDate: DateTime(9999),
+            );
+          },
+          child: Text(
+            "Select Date",
+            style: blackTextStyle,
+          ),
+          style: ElevatedButton.styleFrom(
+            primary: Colors.white,
+          ),
+        ),
+        SizedBox(
+          height: 5,
+        ),
+        TextField(
+          controller: controllerKeterangan,
+          decoration: InputDecoration(
+            icon: Icon(Icons.subtitles),
+            labelText: 'Text',
+          ),
+        ),
+        TextField(
+          controller: controllerHarga,
+          obscureText: true,
+          decoration: InputDecoration(
+            icon: Icon(Icons.payments),
+            labelText: 'Ammount',
+          ),
+        ),
+      ],
+    ),
+    buttons: [
+      DialogButton(
+        onPressed: () => Navigator.pop(context),
+        child: Text(
+          "Save",
+          style: WhiteTextStyle.copyWith(fontSize: 20),
+        ),
+      )
+    ],
+  ).show();
+}
 
 class ExpensePage extends StatelessWidget {
   const ExpensePage({Key? key}) : super(key: key);
@@ -170,7 +233,9 @@ class ExpensePage extends StatelessWidget {
           ),
           child: InkWell(
             borderRadius: BorderRadius.circular(100.0),
-            onTap: () {},
+            onTap: () {
+              _openPopup(context);
+            },
             child: Padding(
               padding: EdgeInsets.all(10.0),
               child: Icon(

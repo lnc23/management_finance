@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:management_finance/color/theme.dart';
-import 'package:management_finance/cubit/auth_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../../cubit/login and singup/auth_cubit.dart';
+import '../../../cubit/login and singup/auth_state.dart';
 import '../../widget/custom button/custom_button.dart';
 import '../../widget/custom form text/custom_text_form_field.dart';
 
@@ -74,24 +75,13 @@ class _SignUpPageState extends State<SignUpPage> {
         );
       }
 
-      Widget hobbyInput() {
-        return customTextFormField(
-          icon: Icon(
-            Icons.sports_esports,
-            color: kWhiteColor,
-          ),
-          hinText: 'Hobby',
-          controller: hobbyController,
-        );
-      }
-
       Widget emailInput() {
         return customTextFormField(
           icon: Icon(
-            Icons.sports_esports,
+            Icons.email,
             color: kWhiteColor,
           ),
-          hinText: 'Hobby',
+          hinText: 'Email',
           controller: emailController,
         );
       }
@@ -99,10 +89,10 @@ class _SignUpPageState extends State<SignUpPage> {
       Widget numberInput() {
         return customTextFormField(
           icon: Icon(
-            Icons.email,
+            Icons.phone,
             color: kWhiteColor,
           ),
-          hinText: 'Email',
+          hinText: 'Number Phone',
           controller: numberController,
         );
       }
@@ -173,7 +163,6 @@ class _SignUpPageState extends State<SignUpPage> {
         child: Column(
           children: [
             nameInput(),
-            hobbyInput(),
             emailInput(),
             passwordInput(),
             numberInput(),
